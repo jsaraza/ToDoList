@@ -1,19 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 const app = express();
 const port = 3001;
+const path = require('path');
 
+
+// Enable CORS
+app.use(cors());
+
+// Parse JSON requests
 app.use(bodyParser.json());
 
-let tasks = [];
+// Serve static files from the Frontend directory
+app.use(express.static(path.join(__dirname, '../Frontend')));
 
+// Your API endpoints go here
 app.post('/api/tasks', (req, res) => {
-    const { task } = req.body;
-    tasks.push(task);
-    console.log("Received task:", task); // Log the task on the server side if needed
-    res.json({ message: 'Task added successfully!' });
+    // Your route logic
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is run on http://localhost:${port}`);
 });
