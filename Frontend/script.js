@@ -59,4 +59,19 @@ async function sendDataToServer(task) {
     }
 }
 
+async function fetchData() {
+    try {
+        const response = await fetch('http://localhost:3001/test');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.text();
+        console.log(data);
+        document.getElementById('result').innerText = data;
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error.message);
+    }
+}
 

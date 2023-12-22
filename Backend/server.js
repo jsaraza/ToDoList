@@ -21,6 +21,10 @@ app.post('/api/tasks', (req, res) => {
     // Your route logic
 });
 
+app.get('/test', (req, res) => {
+    res.send('Hello from backend! 12345');
+});
+
 app.listen(port, () => {
     console.log(`Server is run on http://localhost:${port}`);
 });
