@@ -37,3 +37,24 @@ function showTask(){
     listContainer.innerHTML = localStorage.getItem("data");
 }
 showTask();
+
+
+function getFromServer()
+{
+    // Using the fetch API to make a POST request to the Python server
+    fetch('http://127.0.0.1:5000', {
+        method: 'POST',
+        headers: {
+           'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: 'Hello from JavaScript!' }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Response from Python server:', data.result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
